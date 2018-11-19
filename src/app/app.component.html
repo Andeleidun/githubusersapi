@@ -17,25 +17,29 @@
       <ng-template matTabContent>
         <mat-card>
           <mat-card-header>
-            <a [href]="user.html_url"><mat-card-title color="primary">{{user.name}} - {{user.login}}</mat-card-title></a>
+            <mat-card-title color="primary">{{user.name}} - {{user.login}}</mat-card-title>
           </mat-card-header>
           <mat-card-content>
             <a [href]="user.html_url">
               <img [src]="user.avatar_url" [alt]="user.name">
             </a>
           </mat-card-content>
+          <mat-card-actions>
+              <a mat-raised-button href="{{user.html_url}}" color="primary">View More</a>
+          </mat-card-actions>
         </mat-card>
       </ng-template>
     </mat-tab>
     <mat-tab label="Repositories" *ngIf="repos">
       <ng-template matTabContent>
           <mat-card>
-            <mat-card-content>
+            <mat-card-content *ngFor="let repo of repos;" class="materialCard">
               <mat-list>
-                <mat-list-item *ngFor="let repo of repos;">
+                <mat-list-item>
                   <div>
-                    <a [href]="repo.html_url" matLine><h3 color="primary">{{repo.name}}</h3></a>
+                    <h3 matLine color="primary">{{repo.name}}</h3>
                     <p matLine>{{repo.description}}</p>
+                    <a matLine mat-raised-button href="{{repo.html_url}}" color="primary">View More</a>
                   </div>
                 </mat-list-item>
               </mat-list>
@@ -46,12 +50,13 @@
     <mat-tab label="Starred">
       <ng-template matTabContent>
           <mat-card>
-            <mat-card-content>
+            <mat-card-content *ngFor="let repo of repos;" class="materialCard">
               <mat-list>
                 <mat-list-item *ngFor="let star of starred;">
                   <div>
-                    <a [href]="star.html_url" matLine color="primary"><h3>{{star.name}}</h3></a>
+                    <h3 matLine>{{star.name}}</h3>
                     <p matLine>{{star.description}}</p>
+                    <a matLine mat-raised-button href="{{star.html_url}}" color="primary">View More</a>
                   </div>
                 </mat-list-item>
               </mat-list>

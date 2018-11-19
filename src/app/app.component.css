@@ -1,5 +1,5 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-.centerAlign {
-    text-align: center;
+.materialCard {
+    padding: 10px 0;
 }
